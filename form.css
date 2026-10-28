@@ -46,6 +46,9 @@
 .vision-video { margin-top: 36px; display: grid; grid-template-columns: 1fr; gap: 20px; padding: 24px 28px 28px; background: var(--panel); border: 1px solid var(--gold); border-radius: var(--radius); }
 .vision-video .vv-text h3 { font-size: 24px; color: var(--fg); margin-bottom: 8px; }
 .vision-video .vv-text p { font-size: 16px; color: var(--fg-muted); }
-.vision-video .video { border-color: var(--line); max-width: 760px; }
+.vision-video .video { border-color: var(--line); max-width: none; width: 100%; }
+.vision-video .video .meta { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.vision-video .video .meta h3 { margin: 0; }
+.vision-video .video .meta .ch { margin-top: 0; white-space: nowrap; }
 .vision-video .video .meta h3 { font-size: 16px; }
 @media (max-width: 640px) { .vision-video { padding: 18px; gap: 14px; } }
