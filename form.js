@@ -2,7 +2,7 @@
 (function () {
   /* 送信先。自社サイトに設置するときは、ここにフォーム受信用のURL（Google Apps Script など）を入れる。
      空のときは Artifact の保存機能（db）に記録し、それも使えない環境ではコピー用の文面を表示する。 */
-  var FORM_ENDPOINT = '';
+  var FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz3xImknD_WG2zl5VZOUTErp3HEHBjFEyQRnvh7xYub9uRGFRBV50GYi3KQnYPTSIWa/exec';
 
   var form = document.getElementById('applyForm');
   if (!form) return;
