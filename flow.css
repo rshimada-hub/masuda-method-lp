@@ -1,0 +1,93 @@
+/* ---------- 地続きの構成（パートの切り替えをシームレスに） ----------
+   ・セクションの境界線と背景の切り替えをやめ、1本の流れにする
+   ・左にゴールドの縦線（背骨）を通し、各パートの頭にパート番号の点を置く
+   ・ヘッダーに「いま読んでいるパート」と進行バーを出す
+   ・スクロールに合わせて、前のパートが静かに退き、次のパートが前に出る */
+
+.section { border-top: 0; padding-block: 56px 64px; }
+.section.soft, .section.navy { background: var(--bg); }
+main { position: relative; }
+
+/* 背骨の縦線：各セクションの .wrap の左に通す（隣り合うので1本につながる） */
+.section > .wrap { position: relative; }
+.section > .wrap::before {
+  content: ""; position: absolute; left: calc(var(--gutter-l) - 28px); top: -64px; bottom: -64px; width: 1px;
+  background: linear-gradient(180deg, rgba(201,164,92,.35), rgba(201,164,92,.35));
+}
+.section:first-of-type > .wrap::before { top: 0; }
+.closing { border-top: 0; }
+
+/* パート番号の点（sec-head の eyebrow の高さに置く） */
+.sec-head { position: relative; }
+.sec-head::before {
+  content: ""; position: absolute; left: calc(var(--gutter-l) - 33px); top: 7px; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--bg); border: 2px solid var(--gold); box-sizing: border-box;
+  transition: background .4s ease, box-shadow .4s ease;
+}
+.section.is-current .sec-head::before { background: var(--gold); box-shadow: 0 0 0 5px rgba(201,164,92,.18); }
+.partno { display: inline-block; font-size: 12px; letter-spacing: .18em; font-weight: 700; color: var(--fg-muted); margin-right: 12px; font-variant-numeric: tabular-nums; }
+.partno::after { content: ""; display: inline-block; width: 18px; height: 1px; background: var(--gold-soft); vertical-align: 4px; margin-left: 12px; }
+
+/* パートの切り替え：読んでいるパートだけが前に出る */
+.section { transition: opacity .55s ease, transform .55s ease; }
+.section.is-past, .section.is-ahead { opacity: .42; }
+.section.is-ahead { transform: translateY(18px); }
+.section.is-current { opacity: 1; transform: none; }
+.js .section .reveal { opacity: 1; transform: none; transition: none; } /* 要素ごとの出現はパート単位の切り替えに置き換える */
+
+/* ヘッダー：現在のパート名と進行バー */
+.site-header .now { display: flex; align-items: center; gap: 12px; min-width: 0; font-size: 14px; color: var(--fg-muted); white-space: nowrap; overflow: hidden; }
+.site-header .now b { color: var(--gold); font-weight: 700; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+.site-header .now span { overflow: hidden; text-overflow: ellipsis; color: var(--fg); }
+.site-header .now[hidden] { display: none; }
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--line); }
+.progress i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .15s linear; }
+.site-header { position: sticky; }
+
+/* クロージングとフォームの前は、流れの終点として少し間を取る */
+.start { padding-bottom: 80px; }
+
+@media (max-width: 980px) {
+  .section > .wrap::before, .sec-head::before { display: none; }
+  .partno::after { display: none; }
+  .site-header .now { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section, .section.is-past, .section.is-ahead { opacity: 1; transform: none; transition: none; }
+}
+
+/* ヘッダーの詰まり対策 */
+.site-header .wrap { flex-wrap: nowrap; }
+.nav a { white-space: nowrap; }
+.site-header .now { max-width: 360px; }
+@media (max-width: 1200px) { .brand span { display: none; } }
+
+/* ---------- PROFILE：追従をやめ、上から順に流れる構成に ---------- */
+.profile { grid-template-columns: 1fr; gap: 28px; }
+.profile-card { position: static; display: grid; grid-template-columns: 320px 1fr; gap: 0 28px; align-items: start; max-width: none; }
+.profile-card img.face { aspect-ratio: 4/3; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.profile-card .body { padding: 22px 26px 22px 0; display: grid; grid-template-columns: 1fr auto; gap: 8px 28px; align-items: start; }
+.profile-card .role { grid-column: 1 / -1; }
+.profile-card .name { grid-column: 1 / -1; }
+.profile-card .facts { grid-column: 1; margin-top: 6px; }
+.profile-card .facts li { grid-template-columns: 64px 1fr; }
+.badges { grid-column: 2; grid-row: 3; margin-top: 6px; padding-top: 0; border-top: 0; flex-direction: column; align-items: flex-start; max-width: 260px; }
+.timeline { padding-left: 0; display: grid; gap: 0; }
+.timeline::before { display: none; }
+.timeline li { display: grid; grid-template-columns: 200px 1fr; gap: 0 24px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.timeline li::before { display: none; }
+.timeline li .y { padding-top: 6px; }
+.timeline li .y::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--gold); margin-right: 10px; vertical-align: 1px; box-sizing: border-box; }
+.timeline li.hl .y::before { background: var(--gold); }
+.timeline li b { margin: 0 0 4px; }
+.timeline li .quote { margin-top: 6px; }
+@media (max-width: 980px) {
+  .profile-card { grid-template-columns: 1fr; }
+  .profile-card .body { padding: 18px 20px 20px; grid-template-columns: 1fr; }
+  .badges { grid-column: 1; grid-row: auto; flex-direction: row; max-width: none; }
+  .timeline li { grid-template-columns: 1fr; gap: 2px; }
+}
+.timeline li .y { grid-column: 1; grid-row: 1 / span 3; }
+.timeline li b, .timeline li p, .timeline li .quote { grid-column: 2; }
+.timeline li .quote { justify-self: start; }
+@media (max-width: 980px) { .timeline li .y { grid-row: auto; } .timeline li b, .timeline li p, .timeline li .quote { grid-column: 1; } }

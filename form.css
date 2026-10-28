@@ -1,0 +1,52 @@
+/* ---------- 申込フォーム ---------- */
+.apply-form, .apply-done, .apply-fallback { margin-top: 36px; background: var(--panel); border: 1px solid var(--gold); border-radius: var(--radius); padding: 30px; }
+.apply-form h3, .apply-done h3, .apply-fallback h3 { font-size: 24px; color: var(--fg); margin-bottom: 18px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.apply-form h3 small { font-size: 15px; font-weight: 400; color: var(--gold); }
+.f-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+.f-field { min-width: 0; border: 0; margin: 0; padding: 0; }
+.f-field.wide { grid-column: 1 / -1; }
+.f-field label, .f-field legend { display: block; font-size: 16px; font-weight: 700; color: var(--fg); margin-bottom: 8px; padding: 0; }
+.req { display: inline-block; font-size: 12px; font-weight: 700; color: #121212; background: var(--gold); padding: 1px 8px; margin-left: 8px; vertical-align: 2px; letter-spacing: .06em; }
+.f-field input[type="text"], .f-field input[type="tel"], .f-field input[type="email"] {
+  width: 100%; font: inherit; font-size: 18px; color: var(--fg); background: #121212;
+  border: 1px solid #3a3a3a; border-radius: var(--radius); padding: 12px 14px; outline: none;
+  transition: border-color .15s ease;
+}
+.f-field input::placeholder { color: #666; }
+.f-field input:focus { border-color: var(--gold); }
+.f-field.invalid input { border-color: #e0734f; }
+.f-err { font-size: 14px; color: #e0734f; margin-top: 6px; }
+.f-err:empty { display: none; }
+.f-radios { display: flex; flex-wrap: wrap; gap: 10px; }
+.f-radio { position: relative; display: inline-flex; align-items: center; padding: 12px 18px; border: 1px solid #3a3a3a; border-radius: var(--radius); background: #121212; cursor: pointer; font-size: 17px; color: var(--fg); transition: border-color .15s ease, background .15s ease; }
+.f-radio input { position: absolute; opacity: 0; width: 0; height: 0; }
+.f-radio span::before { content: ""; display: inline-block; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #5a5a5a; margin-right: 10px; vertical-align: -2px; transition: border-color .15s ease, box-shadow .15s ease; }
+.f-radio:hover { border-color: var(--gold-soft); }
+.f-radio:has(input:checked) { border-color: var(--gold); background: rgba(201,164,92,.08); }
+.f-radio:has(input:checked) span::before { border-color: var(--gold); box-shadow: inset 0 0 0 3px #121212, inset 0 0 0 10px var(--gold); }
+.f-radio:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
+.f-note { margin-top: 18px; font-size: 14.5px; color: var(--fg-muted); }
+.f-actions { margin-top: 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.f-actions .btn { font-size: 17px; padding: 14px 32px; }
+.btn[disabled] { opacity: .6; cursor: wait; transform: none; }
+.f-status { font-size: 15px; color: var(--fg-muted); }
+.apply-done { text-align: center; padding: 40px 30px; }
+.apply-done h3 { justify-content: center; color: var(--gold); }
+.apply-done p { color: var(--fg); font-size: 17px; }
+.apply-fallback p { color: var(--fg-muted); font-size: 16px; }
+.apply-fallback p b { color: var(--gold); }
+.apply-fallback textarea { width: 100%; margin-top: 14px; font: inherit; font-size: 15px; color: var(--fg); background: #121212; border: 1px solid #3a3a3a; border-radius: var(--radius); padding: 12px 14px; resize: vertical; }
+@media (max-width: 640px) {
+  .f-grid { grid-template-columns: 1fr; }
+  .apply-form, .apply-done, .apply-fallback { padding: 22px 18px; }
+  .f-actions .btn { width: 100%; }
+}
+
+/* ---------- VISION下の動画 ---------- */
+.vision-video { margin-top: 40px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: 32px; align-items: center; padding: 28px; background: var(--panel); border: 1px solid var(--gold); border-radius: var(--radius); }
+.vision-video .vv-text h3 { font-size: 24px; color: var(--fg); margin-bottom: 12px; }
+.vision-video .vv-text p { font-size: 16px; color: var(--fg-muted); }
+.vision-video .video { border-color: var(--line); }
+.vision-video .video .meta h3 { font-size: 16px; }
+@media (max-width: 980px) { .vision-video { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .vision-video { padding: 18px; gap: 18px; } }

@@ -1,0 +1,192 @@
+/* ---------- スマホ専用のサイズ体系（工務店YouTube LPのスマホ基準に合わせる）
+   本文 14px・小見出し 16〜17px・セクション見出し 23px・ヒーロー 28px・行間 1.85
+   PC向けの1.5倍サイズはここで全部上書きする ---------- */
+@media (max-width: 640px) {
+  body { font-size: 14px; line-height: 1.85; padding-bottom: 76px; }
+  .wrap { padding-left: 18px; padding-right: 18px; }
+  .section { padding-block: 36px 40px; }
+  .sec-head { margin-bottom: 18px; }
+  .eyebrow { font-size: 11px; letter-spacing: .18em; margin-bottom: 8px; }
+  .partno { font-size: 10px; }
+  .sec-head h2 { font-size: 23px; line-height: 1.4; }
+  .sec-head h2::after { width: 60px; height: 2px; margin-top: 10px; }
+  .sec-head .sub { font-size: 14px; margin-top: 10px; }
+  .h3line { font-size: 17px; margin: 28px 0 12px; gap: 10px; }
+  .h3line::before { width: 4px; }
+  .h3line small { font-size: 12px; }
+  .src { font-size: 11px; }
+
+  .site-header .wrap { min-height: 50px; }
+  .brand-text { font-size: 13px; }
+  .site-header .btn { display: inline-flex; font-size: 12px; padding: 7px 12px; }
+
+  .hero .wrap { padding-block: 30px 28px; gap: 20px; }
+  .hero h1 { font-size: 28px; line-height: 1.3; }
+  .hero h1 small { font-size: 12px; margin-bottom: 8px; }
+  .hero h1::after { width: 60px; margin-top: 14px; }
+  .hero .lead { font-size: 14px; margin-top: 14px; }
+  .hero-cta { margin-top: 18px; gap: 8px; }
+  .hero-cta .btn { font-size: 15px; padding: 13px 16px; }
+  .hero-cta .price-tag { font-size: 13px; }
+  .hero-cta .price-tag b { font-size: 18px; }
+  .hero-photo figcaption { font-size: 12px; margin-top: 8px; }
+  .hero-photo figcaption b { font-size: 15px; }
+
+  .btn { font-size: 14px; padding: 11px 18px; }
+  .card { padding: 14px 16px; }
+  .card h3 { font-size: 16px; margin-bottom: 4px; }
+  .card p { font-size: 13.5px; }
+  .card .k { font-size: 11px; margin-bottom: 4px; }
+  .grid.c3 .card, .grid.c4 .card { gap: 4px; padding: 14px 16px; }
+  .conclusion { font-size: 15px; padding: 14px 16px; margin-top: 18px; }
+  .conclusion span { font-size: 13px; margin-top: 4px; }
+  .goldlist li { gap: 12px; }
+  .goldlist li::before { width: 4px; }
+  .goldlist li b { font-size: 16px; }
+  .goldlist li span { font-size: 13.5px; }
+  .steps { gap: 10px; }
+  .steps .step { padding: 14px 16px; }
+  .steps .step .n { font-size: 11px; }
+  .steps .step h3 { font-size: 16px; margin: 4px 0; }
+  .steps .step p { font-size: 13px; }
+  .steps .step:not(:last-child)::after { font-size: 22px; bottom: -22px; }
+  .tiles { gap: 10px; }
+  .tile { padding: 14px 16px 12px; }
+  .tile .l { font-size: 12px; }
+  .tile .v { font-size: 30px; }
+  .tile .v small { font-size: 13px; }
+  .tile .d { font-size: 12.5px; }
+  .formula { padding: 18px 12px; gap: 8px 10px; margin-bottom: 14px; }
+  .formula .t { font-size: 22px; }
+  .formula .op { font-size: 18px; }
+  .formula .cap { font-size: 12px; }
+  .table-wrap tr { padding: 12px 14px; margin-bottom: 8px; }
+  .table-wrap td { font-size: 13.5px; }
+  .table-wrap td.head { font-size: 16px; }
+  .define .big { font-size: 18px; line-height: 1.6; }
+  .define .desc { font-size: 13.5px; margin-top: 10px; }
+  .three .row { padding: 12px 14px; }
+  .three .row b { font-size: 13px; }
+  .three .row ul li { font-size: 13.5px; }
+  .numbered li { padding: 8px 0; grid-template-columns: 28px 1fr; }
+  .numbered li i { font-size: 16px; }
+  .numbered li b { font-size: 15px; }
+  .numbered li span { font-size: 13px; }
+  .order { gap: 8px; }
+  .order .o { padding: 12px 10px; }
+  .order .o i { font-size: 11px; }
+  .order .o b { font-size: 16px; }
+  .order .o span { font-size: 12px; }
+  .flow { padding: 14px 16px; }
+  .flow h3 { font-size: 15px; }
+  .flow h3 .tag { font-size: 11px; }
+  .flow li { font-size: 13.5px; padding: 5px 0 5px 14px; }
+  .videos { gap: 14px; }
+  .video .meta { padding: 12px 14px 14px; }
+  .video .meta .k { font-size: 11px; }
+  .video .meta h3 { font-size: 15px; }
+  .video .meta p { font-size: 13px; }
+  .video .meta .ch { font-size: 11.5px; }
+  .vision-video { margin-top: 22px; }
+  .vision-video .vv-text h3 { font-size: 18px; }
+  .vision-video .vv-text p { font-size: 13.5px; }
+
+  .profile-card .body { padding: 14px 16px 16px; }
+  .profile-card .role { font-size: 11.5px; }
+  .profile-card .name { font-size: 20px; }
+  .profile-card .name small { font-size: 11px; }
+  .profile-card .facts { font-size: 13px; }
+  .badges img { height: 48px; }
+  .badges p { font-size: 11.5px; }
+  .timeline li { padding: 12px 0; }
+  .timeline li .y { font-size: 12px; }
+  .timeline li b { font-size: 15px; }
+  .timeline li p { font-size: 13px; }
+  .timeline li .quote { font-size: 12.5px; padding: 3px 10px; }
+  .store-fig { padding: 14px; gap: 12px; }
+  .store-fig h3 { font-size: 16px; }
+  .store-fig ul li { font-size: 13px; }
+  .message { padding: 18px 16px; margin-top: 16px; }
+  .message::before { font-size: 44px; left: 10px; top: -2px; }
+  .message p { font-size: 13.5px; padding-left: 14px; }
+  .message .sign { font-size: 12px; }
+
+  .results { gap: 12px; }
+  .result-hero { padding: 16px 16px 14px; }
+  .result-hero .l { font-size: 12px; }
+  .result-hero .big .from { font-size: 20px; }
+  .result-hero .big .arrow { font-size: 20px; }
+  .result-hero .big .to { font-size: 38px; }
+  .result-hero .big .to small { font-size: 16px; }
+  .result-hero .d { font-size: 12.5px; }
+  .bars { gap: 10px; margin-top: 12px; }
+  .bar { font-size: 12px; }
+  .bar .val .from, .bar .val .arr { font-size: 14px; }
+  .bar .val b { font-size: 18px; }
+  .bar .val em { font-size: 12px; }
+  .legend { font-size: 11px; }
+  .mini-stats { gap: 8px; }
+  .mini { padding: 12px 14px; }
+  .mini .v { font-size: 20px; }
+  .mini .l { font-size: 12.5px; }
+
+  .menu { gap: 8px; }
+  .menu .card { grid-template-columns: 40px 1fr; padding: 12px 14px; gap: 2px 10px; }
+  .menu .card .no { font-size: 15px; }
+  .menu .card h3 { font-size: 15px; }
+  .menu .card p { font-size: 13px; }
+
+  .price { gap: 12px; }
+  .price-box { padding: 20px 16px 16px; }
+  .price-box .l { font-size: 12px; }
+  .price-box .v { font-size: 44px; }
+  .price-box .v small { font-size: 18px; }
+  .price-box .tax { font-size: 12.5px; }
+  .price-box .inc { margin-top: 12px; padding-top: 12px; }
+  .price-box .inc li { font-size: 13px; padding: 3px 0 3px 22px; }
+  .why-paid { padding: 18px 16px; }
+  .why-paid h3 { font-size: 18px; margin-bottom: 8px; }
+  .why-paid p { font-size: 13.5px; }
+
+  .promise .card { grid-template-columns: 34px 1fr; gap: 10px; }
+  .promise .card .icon { width: 34px; height: 34px; }
+  .ahead { gap: 8px; }
+  .cycle { font-size: 12.5px; margin-top: 16px; }
+  .cycle span { padding: 6px 10px; }
+  .cycle i { font-size: 16px; }
+  .apply-form, .apply-done, .apply-fallback { padding: 18px 14px; margin-top: 20px; }
+  .apply-form h3, .apply-done h3, .apply-fallback h3 { font-size: 18px; margin-bottom: 12px; }
+  .apply-form h3 small { font-size: 12px; }
+  .f-grid { gap: 12px; }
+  .f-field label, .f-field legend { font-size: 14px; margin-bottom: 6px; }
+  .req { font-size: 10px; padding: 0 6px; }
+  .f-field input[type="text"], .f-field input[type="tel"], .f-field input[type="email"] { font-size: 16px; padding: 10px 12px; }
+  .f-radio { font-size: 14px; padding: 10px 14px; }
+  .f-note { font-size: 12px; margin-top: 12px; }
+  .f-actions .btn { font-size: 15px; padding: 13px 16px; }
+  .f-status, .f-err { font-size: 12.5px; }
+  .apply-done p, .apply-fallback p { font-size: 14px; }
+  .apply-fallback textarea { font-size: 13px; }
+
+  .closing { padding-block: 44px; }
+  .closing h2 { font-size: 22px; }
+  .closing h2::after { width: 60px; margin-top: 14px; }
+  .closing p { font-size: 14px; margin-top: 12px; }
+  .closing .sign { font-size: 12px; }
+  .closing .btn { font-size: 15px; padding: 13px 20px; margin-top: 18px; }
+  .site-footer { font-size: 11px; }
+  .fb-inner { padding-top: 8px; padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); gap: 10px; }
+  .fb-text b { font-size: 13px; }
+  .float-banner .btn { font-size: 13px; padding: 10px 14px; }
+}
+
+@media (max-width: 980px) { .store-fig { grid-template-columns: minmax(0,1fr); } .store-fig img { width: 100%; } }
+
+/* スマホでは行を均等にせず、右端まで使って折り返す（最後の1文字だけの行は避ける） */
+@media (max-width: 640px) {
+  body *, h1, h2, h3, h4, p, li, span, b, .conclusion, .h3line small { text-wrap: pretty; }
+  .ph { display: inline; }
+}
+
+/* ヘッダーの申込ボタンはスマホでは出さない（下のフローティングバナーに統一） */
+@media (max-width: 640px) { .site-header .btn { display: none; } .brand-text { font-size: 15px; } }

@@ -1,0 +1,6 @@
+dist/
+*.zip
+styles.pg-navy.bak.css
+.claude/
+sheet.json
+.vercel/
