@@ -27,10 +27,20 @@
       return true;
     }
 
+    function process(el) {
+      if (el.children.length === 0) {
+        var len = el.textContent.replace(/\s/g, '').length;
+        if (len <= SHORT) groupSentences(el);
+        return;
+      }
+      Array.prototype.forEach.call(el.children, function (c) {
+        if (c.tagName === 'INPUT' || c.tagName === 'TEXTAREA' || c.tagName === 'SELECT' || c.tagName === 'SVG' || c.tagName === 'svg' || c.tagName === 'IMG') return;
+        process(c);
+      });
+    }
     document.querySelectorAll(sel).forEach(function (el) {
       if (el.querySelector('input, textarea, select')) return;
-      var len = el.textContent.replace(/\s/g, '').length;
-      if (len <= SHORT) groupSentences(el);
+      process(el);
       parser.applyToElement(el);
     });
   } catch (e) {}
