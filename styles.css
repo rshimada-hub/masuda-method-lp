@@ -571,6 +571,7 @@ body { padding-bottom: 96px; }
 @media (max-width: 980px) { .grid.c3 .card h3, .grid.c4 .card h3 { white-space: normal; } }
 
 /* 文（。）単位のまとまり：行に収まらなければ「。」の後で改行する */
-.sent, .cl { display: inline-block; }
+.sent, .cl { display: inline-block; text-wrap: auto; }
+:has(> .sent), :has(> .cl) { text-wrap: auto; }
 /* 数値は途中で切らない */
 .num, .stat .v, .tile .v, .mini .v em, .price-box .v, .result-hero .big { word-break: keep-all; }

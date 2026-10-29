@@ -19,6 +19,7 @@
       return frag;
     }
     function groupSentences(el) {
+      el.style.textWrap = 'auto'; /* 行の均等化は文・節のまとまりと干渉するので外す */
       var text = el.textContent;
       var parts = (text.match(/[^。]*。|[^。]+$/g) || [text]).filter(function (s) { return s.length; });
       el.textContent = '';
@@ -36,7 +37,7 @@
       /* 要素と文字が混ざる箱：文字部分だけ span に包んで文単位にする */
       Array.prototype.slice.call(el.childNodes).forEach(function (n) {
         if (n.nodeType === 3 && /[。、]/.test(n.textContent) && n.textContent.replace(/\s/g, '').length <= SHORT) {
-          var sp = document.createElement('span'); sp.textContent = n.textContent; el.replaceChild(sp, n); groupSentences(sp);
+          var sp = document.createElement('span'); sp.textContent = n.textContent; el.replaceChild(sp, n); groupSentences(sp); el.style.textWrap = 'auto';
         }
       });
       Array.prototype.forEach.call(el.children, walk);
