@@ -572,3 +572,5 @@ body { padding-bottom: 96px; }
 
 /* 文（。）単位のまとまり：行に収まらなければ「。」の後で改行する */
 .sent { display: inline-block; }
+/* 数値は途中で切らない */
+.num, .stat .v, .tile .v, .mini .v em, .price-box .v, .result-hero .big { word-break: keep-all; }
