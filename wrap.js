@@ -10,14 +10,21 @@
     var SHORT = 90;
     var SKIP = { SCRIPT: 1, STYLE: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1, OPTION: 1, SVG: 1, svg: 1, IMG: 1, NOSCRIPT: 1 };
 
+    /* 短い文章：文（。）→ 節（、）の順にまとまりを作る。行に収まらないときは「。」、次に「、」の後で改行する */
+    function clauseSpans(sentence) {
+      var frag = document.createDocumentFragment();
+      var cls = sentence.match(/[^、]*、|[^、]+$/g) || [sentence];
+      if (cls.length < 2) { frag.appendChild(document.createTextNode(sentence)); return frag; }
+      cls.forEach(function (c) { if (!c) return; var sp = document.createElement('span'); sp.className = 'cl'; sp.textContent = c; frag.appendChild(sp); });
+      return frag;
+    }
     function groupSentences(el) {
       var text = el.textContent;
-      var parts = text.match(/[^。]*。|[^。]+$/g);
-      if (!parts || parts.filter(function (s) { return s.trim(); }).length < 2) return;
+      var parts = (text.match(/[^。]*。|[^。]+$/g) || [text]).filter(function (s) { return s.length; });
       el.textContent = '';
+      if (parts.length < 2) { el.appendChild(clauseSpans(text)); return; }
       parts.forEach(function (s) {
-        if (!s) return;
-        var sp = document.createElement('span'); sp.className = 'sent'; sp.textContent = s; el.appendChild(sp);
+        var sp = document.createElement('span'); sp.className = 'sent'; sp.appendChild(clauseSpans(s)); el.appendChild(sp);
       });
     }
     function walk(el) {
@@ -28,7 +35,7 @@
       }
       /* 要素と文字が混ざる箱：文字部分だけ span に包んで文単位にする */
       Array.prototype.slice.call(el.childNodes).forEach(function (n) {
-        if (n.nodeType === 3 && /。/.test(n.textContent) && n.textContent.replace(/\s/g, '').length <= SHORT) {
+        if (n.nodeType === 3 && /[。、]/.test(n.textContent) && n.textContent.replace(/\s/g, '').length <= SHORT) {
           var sp = document.createElement('span'); sp.textContent = n.textContent; el.replaceChild(sp, n); groupSentences(sp);
         }
       });
