@@ -87,11 +87,14 @@
 /* フローティングバナー：ヒーローを過ぎたら表示、申込フォームが見えている間は隠す */
 (function () {
   var fb = document.getElementById('floatBanner'); if (!fb) return;
-  var hero = document.querySelector('.hero'); var start = document.getElementById('start');
+  var hero = document.querySelector('.hero'); var start = document.getElementById('start'); var cta = document.getElementById('cta');
   function tick() {
     var pastHero = hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 400;
     var r = start ? start.getBoundingClientRect() : null;
     var onForm = r ? (r.top < window.innerHeight * 0.6 && r.bottom > 0) : false;
+    var c = cta ? cta.getBoundingClientRect() : null;
+    var onCta = c ? (c.top < window.innerHeight && c.bottom > 0) : false;
+    onForm = onForm || onCta;
     fb.hidden = !(pastHero && !onForm);
   }
   window.addEventListener('scroll', function () { requestAnimationFrame(tick); }, { passive: true });
