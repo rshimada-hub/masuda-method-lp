@@ -33,6 +33,12 @@
         if (len <= SHORT) groupSentences(el);
         return;
       }
+      /* 太字ラベル＋本文のように、要素と文字が混ざる場合は、文字部分を span に包んで文単位にする */
+      Array.prototype.slice.call(el.childNodes).forEach(function (n) {
+        if (n.nodeType === 3 && /。/.test(n.textContent) && n.textContent.replace(/\s/g, '').length <= SHORT) {
+          var sp = document.createElement('span'); sp.textContent = n.textContent; el.replaceChild(sp, n); groupSentences(sp);
+        }
+      });
       Array.prototype.forEach.call(el.children, function (c) {
         if (c.tagName === 'INPUT' || c.tagName === 'TEXTAREA' || c.tagName === 'SELECT' || c.tagName === 'SVG' || c.tagName === 'svg' || c.tagName === 'IMG') return;
         process(c);
